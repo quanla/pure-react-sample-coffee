@@ -7,7 +7,7 @@ export class FlipWizard extends RComponent {
         super(props, context);
 
         this.state = {
-            currentStepIndex: 0
+            currentStepIndex: props.initStepIndex || 0
         };
     }
 

@@ -16,10 +16,14 @@ export class OrderForm extends RComponent {
             },
             {
                 title: "Nhập thông tin đặt hàng",
+                render: () => (
+                    <CustomerInfo/>
+                )
+            },
+            {
+                title: "Chọn vị trí giao hàng",
                 render: ({onGoBack}) => (
-                    <CustomerInfo
-                        onGoBack={onGoBack}
-                    />
+                    <CustomerInfo/>
                 )
             },
         ];
@@ -31,6 +35,7 @@ export class OrderForm extends RComponent {
         return (
             <div className="order-form">
                 <FlipWizard
+                    initStepIndex={1}
                     steps={this.steps}
                 />
             </div>
