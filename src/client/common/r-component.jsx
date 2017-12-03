@@ -1,3 +1,5 @@
+import React from "react";
+
 export class RComponent extends React.Component {
     onUnmounts = [];
     onMounts = [];

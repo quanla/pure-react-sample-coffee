@@ -1,5 +1,9 @@
-import {Sample} from "./sample/sample";
+import {CoffeeApp} from "./coffee-app/coffee-app";
+import React from "react";
+import ReactDOM from "react-dom";
+
+window.React = React;
 
 ReactDOM.render((
-    <Sample/>
+    <CoffeeApp/>
 ), document.getElementById("app-container"));
