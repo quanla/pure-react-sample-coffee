@@ -1,4 +1,5 @@
 .flip-panel {
+  overflow hidden;
   .flip-card {
     height 100%;
     overflow-y auto;
@@ -7,12 +8,13 @@
     &.slide-up-enter {
       position absolute;
       width 100%;
+      z-index 1;
 
       top 100%;
     }
     &.slide-up-enter.slide-up-enter-active {
       top 0;
-      transition: top 300ms ease;
+      transition: top 30000ms ease;
     }
 
     &.slide-down-leave {
@@ -22,7 +24,7 @@
     }
     &.slide-down-leave.slide-down-leave-active {
       top 100%;
-      transition: top 300ms ease;
+      transition: top 30000ms ease;
     }
 
   }

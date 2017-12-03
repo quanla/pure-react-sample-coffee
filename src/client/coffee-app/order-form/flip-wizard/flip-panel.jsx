@@ -26,8 +26,8 @@ export class FlipPanel extends RComponent {
                 component="div"
                 className={classnames("flip-panel", className)}
                 transitionName={direction == null ? "no-slide" : direction=="up" ? "slide-up" : "slide-down"}
-                transitionEnterTimeout={300}
-                transitionLeaveTimeout={300}
+                transitionEnterTimeout={30000}
+                transitionLeaveTimeout={30000}
             >
                 <div
                     className="flip-card"
