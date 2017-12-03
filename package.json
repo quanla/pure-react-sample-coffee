@@ -1,0 +1,27 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "chokidar": "^1.7.0",
+    "classnames": "^2.2.5",
+    "express": "^4.16.2",
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.3.0",
+    "gulp-sort": "^2.0.0",
+    "gulp-stylus": "^2.6.0"
+  }
+}

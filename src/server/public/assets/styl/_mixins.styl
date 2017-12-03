@@ -1,0 +1,83 @@
+ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+no-select() {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+clearfix() {
+  &:after {
+    content: "";
+    clear both;
+    display block;
+  }
+}
+
+textarea_placeholder(textAlign, paddingTop) {
+  &::-webkit-input-placeholder {
+    text-align textAlign
+    padding-top paddingTop
+  }
+
+  &:-moz-placeholder {
+    text-align textAlign
+    padding-top paddingTop
+  }
+
+  &::-moz-placeholder {
+    text-align textAlign
+    padding-top paddingTop
+  }
+
+  &:-ms-input-placeholder {
+    text-align textAlign
+    padding-top paddingTop
+  }
+}
+
+placeholder-color(placeholder_color) {
+  &::placeholder {
+    color: placeholder_color;
+  }
+
+  &::-webkit-input-placeholder {
+    color: placeholder_color;
+  }
+
+  &:-moz-placeholder {
+    color: placeholder_color;
+  }
+
+  &::-moz-placeholder {
+    color: placeholder_color;
+  }
+
+  &:-ms-input-placeholder {
+    color: placeholder_color;
+  }
+}
+
+//transition($value) {
+//  -webkit-transition: $value;
+//  -moz-transition: $value;
+//  -ms-transition: $value;
+//  -o-transition: $value;
+//  transition: $value;
+//}
+
+transform(args...)
+  -moz-transform args
+  -webkit-transform args
+  -o-transform args
+  -khtml-transform args
+  -ms-transform args
+  transform args
