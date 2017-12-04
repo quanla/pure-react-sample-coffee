@@ -5,6 +5,7 @@ import {IntroStep} from "./steps/intro/intro-step";
 import {CustomerInfo} from "./steps/customer-info/customer-info-step";
 import {LocationStep} from "./steps/location/location-step";
 import {ItemsStep} from "./steps/items/items-step";
+import {SummaryStep} from "./steps/summary/summary-step";
 
 export class OrderForm extends RComponent {
     constructor(props, context) {
@@ -25,7 +26,13 @@ export class OrderForm extends RComponent {
             items: [],
         };
 
-        this.steps = [
+    }
+
+    render() {
+
+        const {customer, location, items} = this.state;
+
+        const steps = [
             {
                 render: () => (
                     <IntroStep/>
@@ -35,7 +42,7 @@ export class OrderForm extends RComponent {
                 title: "Nhập thông tin đặt hàng",
                 render: () => (
                     <CustomerInfo
-                        customer={this.state.customer}
+                        customer={customer}
                         onChange={(customer) => this.setState({customer})}
                     />
                 )
@@ -44,7 +51,7 @@ export class OrderForm extends RComponent {
                 title: "Chọn vị trí giao hàng",
                 render: ({onGoBack}) => (
                     <LocationStep
-                        location={this.state.location}
+                        location={location}
                         onChange={(location) => this.setState({location})}
                         onGoBack={onGoBack}
                     />
@@ -55,21 +62,28 @@ export class OrderForm extends RComponent {
                 render: ({onGoBack}) => (
                     <ItemsStep
                         onGoBack={onGoBack}
-                        location={location}
-                        onChange={(location) => this.setState({location})}
+                        items={items}
+                        onChange={(items) => this.setState({items})}
+                    />
+                )
+            },
+            {
+                title: "Xem giỏ hàng",
+                render: ({onGoBack}) => (
+                    <SummaryStep
+                        onGoBack={onGoBack}
+                        bill={this.state}
+                        onChange={(update) => this.setState(update)}
                     />
                 )
             },
         ];
-    }
-
-    render() {
 
         return (
             <div className="order-form">
                 <FlipWizard
-                    initStepIndex={0}
-                    steps={this.steps}
+                    initStepIndex={3}
+                    steps={steps}
                 />
             </div>
         );

@@ -3,4 +3,137 @@
   background: url(/assets/img/order-mobile.gif) center no-repeat;
   background-size: cover;
   overflow auto;
+
+  .group-title {
+    font-size: 20px;
+    color: #ff792c;
+    font-weight 600;
+    padding 10px 15px;
+
+    & > .qty {
+      display inline-block;
+      color: #fff;
+      border-radius: 50%;
+      margin-left: 10px;
+      text-align: center;
+      background-color: #ff792c;
+      font-size: 11px;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      top: -2px;
+      position relative;
+    }
+  }
+
+  .products {
+    overflow-x scroll;
+    white-space nowrap;
+    padding-top 20px;
+    padding-right 20px;
+
+    .product {
+      display inline-block;
+      margin 0 20px;
+      width 225px - 48px;
+      height: 225px;
+      position relative;
+      padding-bottom 48px;
+
+      border-radius: 5px;
+      border: 1px solid #ddd;
+
+      .show-off {
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100%;
+        background-size: cover;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position relative;
+
+        .name {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width 100%;
+          height 35px;
+          line-height 35px;
+          text-align center;
+          text-transform uppercase;
+          color white;
+          background rgba(255, 121, 44, 0.7);
+          font-size: 13px
+          font-weight: 700
+        }
+      }
+
+      .selector {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width 100%;
+        height 48px;
+
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        .size {
+          height 100%;
+          float left;
+          text-align center;
+
+          &:not(:first-child) {
+            border-left: 1px solid #ebebeb;
+          }
+
+          &.active {
+            color white;
+
+            .icon .qty {
+              color: black;
+            }
+          }
+          &.size-s.active {
+            background-color: #f9c159;
+          }
+          &.size-m.active {
+            background-color: #fd9626;
+          }
+
+          .icon {
+            display inline-block;
+            width: 22px;
+            position relative;
+            top: 7px;
+            img {
+              width: 100%;
+            }
+            .qty {
+              position: absolute;
+              top: 10px;
+              left: 0;
+              width 100%;
+              height 100%;
+              text-align center;
+
+              font-weight bold;
+            }
+          }
+
+          .price {
+            padding-left 6px;
+            display inline-block;
+          }
+        }
+
+        &.selector-1 .size {
+          width 100%;
+        }
+        &.selector-2 .size {
+          width 50%;
+        }
+      }
+    }
+  }
 }

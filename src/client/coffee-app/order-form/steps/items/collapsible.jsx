@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import {RComponent} from "../../../../common/r-component";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export class Collapsible extends RComponent {
 
@@ -12,7 +13,7 @@ export class Collapsible extends RComponent {
     }
 
     render() {
-        const {title} = this.props;
+        const {title, renderChildren} = this.props;
         const {collapsed} = this.state;
 
         return (
@@ -23,11 +24,18 @@ export class Collapsible extends RComponent {
                     {title}
                 </div>
 
-                {!collapsed && (
-                    <div className="children">
-
-                    </div>
-                )}
+                <ReactCSSTransitionGroup
+                    component="div"
+                    transitionName="collapse"
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}
+                >
+                    {!collapsed && (
+                        <div className="children">
+                            {renderChildren()}
+                        </div>
+                    )}
+                </ReactCSSTransitionGroup>
             </div>
         );
     }

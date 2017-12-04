@@ -1,8 +1,26 @@
 .collapsible {
-  .title {
-    font-size: 20px;
-    color: #ff792c;
-    padding 10px 15px;
+  & > .title {
     border-bottom: 1px solid #ddd;
+  }
+
+  & > div > .children {
+    border-bottom: 1px solid #ddd;
+    height 267px;
+
+    &.collapse-enter {
+      height 1px;
+      overflow hidden;
+    }
+    &.collapse-enter.collapse-enter-active {
+      height 267px;
+      transition: height 300ms ease;
+    }
+    &.collapse-leave {
+      overflow hidden;
+    }
+    &.collapse-leave.collapse-leave-active {
+      height 1px;
+      transition: height 300ms ease;
+    }
   }
 }
