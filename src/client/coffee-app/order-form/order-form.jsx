@@ -23,7 +23,22 @@ export class OrderForm extends RComponent {
                 district: "Từ Liêm",
                 city: "Hà Nội"
             },
-            items: [],
+            items: [
+                {
+                    product: {
+                        id: 1443,
+                        name: "Affogato đá xay cà phê",
+                        sizes: [
+                            {
+                                name: "s",
+                                price: 59000,
+                            }
+                        ],
+                        group: 1,
+                    },
+                    sizes: [{name: "s", qty: 2}]
+                }
+            ],
         };
 
     }
@@ -69,11 +84,12 @@ export class OrderForm extends RComponent {
             },
             {
                 title: "Xem giỏ hàng",
-                render: ({onGoBack}) => (
+                render: ({onGoBack, onGoStep}) => (
                     <SummaryStep
                         onGoBack={onGoBack}
                         bill={this.state}
                         onChange={(update) => this.setState(update)}
+                        onGoCustomerInfo={() => onGoStep(1)}
                     />
                 )
             },
@@ -82,8 +98,13 @@ export class OrderForm extends RComponent {
         return (
             <div className="order-form">
                 <FlipWizard
-                    initStepIndex={3}
+                    initStepIndex={4}
                     steps={steps}
+                    renderFinishButtons={() => (
+                        <div className="">
+
+                        </div>
+                    )}
                 />
             </div>
         );
