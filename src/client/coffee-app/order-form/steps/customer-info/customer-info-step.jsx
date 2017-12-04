@@ -15,7 +15,7 @@ export class CustomerInfo extends RComponent {
             <div className="customer-info-step">
                 <div className="header">
                     <div className="">
-                        <img src="/assets/img/logo_tch_black.png"/>
+                        <img src="assets/img/logo_tch_black.png"/>
                     </div>
 
                     <div className="text">
@@ -52,7 +52,7 @@ export class CustomerInfo extends RComponent {
                             onClick={() => onChange({...customer, deliver_now: true})}
                         >
                             <img
-                                src={customer.deliver_now ? `/assets/img/option_active.png` : `/assets/img/option_inactive.png`} className="option-radio"
+                                src={customer.deliver_now ? `assets/img/option_active.png` : `assets/img/option_inactive.png`} className="option-radio"
                             />
                             Giao hàng ngay
                         </label>
@@ -60,7 +60,7 @@ export class CustomerInfo extends RComponent {
                             onClick={() => onChange({...customer, deliver_now: false})}
                         >
                             <img
-                                src={!customer.deliver_now ? `/assets/img/option_active.png` : `/assets/img/option_inactive.png`} className="option-radio"
+                                src={!customer.deliver_now ? `assets/img/option_active.png` : `assets/img/option_inactive.png`} className="option-radio"
                             />
                             Chọn thời gian
                         </label>

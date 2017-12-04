@@ -117,7 +117,7 @@ const renderProduct = (product, {onAddProduct, getSizeQty}) => {
                 onClick={() => onAddProduct(product, size.name)}
             >
                 <div className="icon">
-                    <img src={`/assets/img/cup/coffe-cup-${size.name}${!sizeQty ? "-a" : ""}.png`}/>
+                    <img src={`assets/img/cup/coffe-cup-${size.name}${!sizeQty ? "-a" : ""}.png`}/>
 
                     {!!sizeQty && (
                         <div className="qty">

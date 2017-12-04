@@ -7,7 +7,7 @@ export class IntroStep extends RComponent {
         return (
             <div className="intro-step">
                 <div className="install-app">
-                    <img src="/assets/img/appicon.png"/>
+                    <img src="assets/img/appicon.png"/>
 
                     The Coffee House Mobile
 
@@ -30,7 +30,7 @@ export class IntroStep extends RComponent {
                     </div>
 
                     <div className="body">
-                        <img src="/assets/img/tch.jpg"/>
+                        <img src="assets/img/tch.jpg"/>
 
                         <div className="order-steps">
                             <h3>Các bước đặt món</h3>
