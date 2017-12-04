@@ -8,16 +8,29 @@ export class OrderForm extends RComponent {
     constructor(props, context) {
         super(props, context);
 
+        this.state = {
+            customer: {
+                name: "",
+                phone: "",
+                email: "",
+                deliver_now: true
+            }
+        };
+
         this.steps = [
             {
                 render: () => (
                     <IntroStep/>
-                )
+                ),
+                cardClassName: "intro-step",
             },
             {
                 title: "Nhập thông tin đặt hàng",
                 render: () => (
-                    <CustomerInfo/>
+                    <CustomerInfo
+                        customer={this.state.customer}
+                        onChange={(customer) => this.setState({customer})}
+                    />
                 )
             },
             {
@@ -29,13 +42,12 @@ export class OrderForm extends RComponent {
         ];
     }
 
-
     render() {
 
         return (
             <div className="order-form">
                 <FlipWizard
-                    initStepIndex={0}
+                    initStepIndex={1}
                     steps={this.steps}
                 />
             </div>

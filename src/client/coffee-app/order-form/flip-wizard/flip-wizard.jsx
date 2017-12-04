@@ -22,6 +22,7 @@ export class FlipWizard extends RComponent {
                 <FlipPanel
                     className="step-panel"
                     selectedIndex={currentStepIndex}
+                    cardClassName={steps[currentStepIndex].cardClassName}
                 >
                     {steps[currentStepIndex].render({
                         onGoBack: () => this.setState({currentStepIndex: currentStepIndex - 1})

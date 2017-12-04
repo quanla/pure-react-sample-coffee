@@ -18,7 +18,7 @@ export class FlipPanel extends RComponent {
     }
 
     render() {
-        const {className, children, selectedIndex} = this.props;
+        const {className, children, selectedIndex, cardClassName} = this.props;
         const {direction} = this.state;
 
         return (
@@ -30,7 +30,7 @@ export class FlipPanel extends RComponent {
                 transitionLeaveTimeout={300}
             >
                 <div
-                    className="flip-card"
+                    className={classnames("flip-card", cardClassName)}
                     key={selectedIndex}
                 >
                     {children}
