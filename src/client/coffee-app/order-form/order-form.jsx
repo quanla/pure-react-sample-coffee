@@ -100,9 +100,16 @@ export class OrderForm extends RComponent {
                 <FlipWizard
                     initStepIndex={0}
                     steps={steps}
-                    renderFinishButtons={() => (
-                        <div className="">
-
+                    renderFinishButtons={({onGoBack}) => (
+                        <div className="finish-controls">
+                            <div className="repick-items"
+                                 onClick={onGoBack}
+                            >
+                                Chọn thêm món
+                            </div>
+                            <div className="btn-finish">
+                                Đặt hàng
+                            </div>
                         </div>
                     )}
                 />
