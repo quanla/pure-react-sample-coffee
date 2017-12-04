@@ -1,3 +1,4 @@
+const path = require("path");
 
 module.exports = {
     cache: true,
@@ -20,13 +21,16 @@ module.exports = {
                     cacheDirectory: true,
                     presets: ['latest', 'stage-0', "react"],
                 }
-
             },
         ],
     },
     resolve: {
         // root: __dirname + "/src/js",
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        alias: {
+            "react": path.resolve(__dirname, 'src/build/webpack-alias-react.js'),
+            "react-dom": path.resolve(__dirname, 'src/build/webpack-alias-react-dom.js'),
+        },
     },
 };
 
