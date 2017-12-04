@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp dev"
+    "dev": "gulp dev",
+    "deploy": "gulp deploy"
   },
   "author": "",
   "license": "ISC",
@@ -24,5 +25,9 @@
     "gulp-sort": "^2.0.0",
     "gulp-stylus": "^2.6.0",
     "react-addons-css-transition-group": "^15.6.2"
+  },
+  "devDependencies": {
+    "archiver": "^2.1.0",
+    "extract-zip": "^1.6.6"
   }
 }
