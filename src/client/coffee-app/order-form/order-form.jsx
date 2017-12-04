@@ -68,7 +68,7 @@ export class OrderForm extends RComponent {
         return (
             <div className="order-form">
                 <FlipWizard
-                    initStepIndex={2}
+                    initStepIndex={0}
                     steps={this.steps}
                 />
             </div>
