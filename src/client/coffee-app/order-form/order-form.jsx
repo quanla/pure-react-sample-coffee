@@ -13,8 +13,8 @@ export class OrderForm extends RComponent {
 
         this.state = {
             customer: {
-                name: "",
-                phone: "",
+                name: "Lê Anh Quân",
+                phone: "09123123123",
                 email: "",
                 deliver_now: true
             },
@@ -86,10 +86,11 @@ export class OrderForm extends RComponent {
                 title: "Xem giỏ hàng",
                 render: ({onGoBack, onGoStep}) => (
                     <SummaryStep
-                        onGoBack={onGoBack}
                         bill={this.state}
                         onChange={(update) => this.setState(update)}
+                        onGoItems={onGoBack}
                         onGoCustomerInfo={() => onGoStep(1)}
+                        onGoLocation={() => onGoStep(2)}
                     />
                 )
             },
@@ -98,7 +99,7 @@ export class OrderForm extends RComponent {
         return (
             <div className="order-form">
                 <FlipWizard
-                    initStepIndex={0}
+                    initStepIndex={4}
                     steps={steps}
                     renderFinishButtons={({onGoBack}) => (
                         <div className="finish-controls">
