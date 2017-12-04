@@ -1,0 +1,41 @@
+.location-step {
+  background #f6f6f6;
+  height 100%;
+
+  & > .content {
+    position relative;
+    padding-top 98px;
+
+    .form-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width 100%;
+
+      .form {
+        max-width 330px;
+        margin 0 auto 0;
+      }
+    }
+
+    .mock-map {
+      height 100%;
+
+      background: url(/assets/img/mock_map.png) center no-repeat;
+      background-size: cover;
+    }
+  }
+
+
+  .dual-panel {
+    position relative;
+    padding-left calc(50% + 7px);
+
+    & > div:first-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width calc(50% - 7px);
+    }
+  }
+}

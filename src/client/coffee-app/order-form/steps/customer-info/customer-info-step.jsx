@@ -6,6 +6,11 @@ export class CustomerInfo extends RComponent {
     render() {
         const {customer, onChange} = this.props;
 
+        const bind = (field) => ({
+            value: customer[field],
+            onChange: (e) => onChange({...customer, [field]: e.target.value}),
+        });
+
         return (
             <div className="customer-info-step">
                 <div className="header">
@@ -25,24 +30,21 @@ export class CustomerInfo extends RComponent {
                         <input
                             className="form-control"
                             placeholder="Tên"
-                            value={customer.name}
-                            onChange={(e) => onChange({...customer, name: e.target.value})}
+                            {...bind("name")}
                         />
                     </div>
                     <div className="form-group">
                         <input
                             className="form-control"
                             placeholder="Số điện thoại"
-                            value={customer.phone}
-                            onChange={(e) => onChange({...customer, phone: e.target.value})}
+                            {...bind("phone")}
                         />
                     </div>
                     <div className="form-group">
                         <input
                             className="form-control"
                             placeholder="Email"
-                            value={customer.email}
-                            onChange={(e) => onChange({...customer, email: e.target.value})}
+                            {...bind("email")}
                         />
                     </div>
                     <div className="form-group">

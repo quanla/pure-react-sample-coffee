@@ -3,6 +3,8 @@ import {RComponent} from "../../common/r-component";
 import {FlipWizard} from "./flip-wizard/flip-wizard";
 import {IntroStep} from "./steps/intro/intro-step";
 import {CustomerInfo} from "./steps/customer-info/customer-info-step";
+import {LocationStep} from "./steps/location/location-step";
+import {ItemsStep} from "./steps/items/items-step";
 
 export class OrderForm extends RComponent {
     constructor(props, context) {
@@ -14,7 +16,13 @@ export class OrderForm extends RComponent {
                 phone: "",
                 email: "",
                 deliver_now: true
-            }
+            },
+            location: {
+                address: "Chung cư cao cấp Ecolife Captiol, Tố Hữu, Trung Văn",
+                district: "Từ Liêm",
+                city: "Hà Nội"
+            },
+            items: [],
         };
 
         this.steps = [
@@ -22,7 +30,6 @@ export class OrderForm extends RComponent {
                 render: () => (
                     <IntroStep/>
                 ),
-                cardClassName: "intro-step",
             },
             {
                 title: "Nhập thông tin đặt hàng",
@@ -36,7 +43,21 @@ export class OrderForm extends RComponent {
             {
                 title: "Chọn vị trí giao hàng",
                 render: ({onGoBack}) => (
-                    <CustomerInfo/>
+                    <LocationStep
+                        location={this.state.location}
+                        onChange={(location) => this.setState({location})}
+                        onGoBack={onGoBack}
+                    />
+                )
+            },
+            {
+                title: "Chọn món",
+                render: ({onGoBack}) => (
+                    <ItemsStep
+                        onGoBack={onGoBack}
+                        location={location}
+                        onChange={(location) => this.setState({location})}
+                    />
                 )
             },
         ];
@@ -47,7 +68,7 @@ export class OrderForm extends RComponent {
         return (
             <div className="order-form">
                 <FlipWizard
-                    initStepIndex={1}
+                    initStepIndex={2}
                     steps={this.steps}
                 />
             </div>

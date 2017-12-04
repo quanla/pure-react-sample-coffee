@@ -7,7 +7,6 @@
     height 100%;
     width 100%;
     left 0;
-    overflow-y auto;
 
     &.slide-up-enter {
       top 100%;
@@ -18,8 +17,20 @@
     }
     &.slide-up-leave {
       z-index -1;
+      top 0;
+    }
+    &.slide-up-leave.slide-up-leave-active {
+      top -30px;
+      transition: top 300ms ease;
     }
 
+    &.slide-down-enter {
+      top -30px;
+    }
+    &.slide-down-enter.slide-down-enter-active {
+      top 0;
+      transition: top 300ms ease;
+    }
     &.slide-down-leave {
       top 0;
     }
