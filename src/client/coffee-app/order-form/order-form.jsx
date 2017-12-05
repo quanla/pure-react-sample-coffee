@@ -99,7 +99,7 @@ export class OrderForm extends RComponent {
         return (
             <div className="order-form">
                 <FlipWizard
-                    initStepIndex={4}
+                    initStepIndex={0}
                     steps={steps}
                     renderFinishButtons={({onGoBack}) => (
                         <div className="finish-controls">

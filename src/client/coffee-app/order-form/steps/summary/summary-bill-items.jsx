@@ -34,7 +34,7 @@ export const renderBillItems = (onChange, items) => {
                            onClick={decreaseQty}
                         />
 
-                        <div>x {size.qty}</div>
+                        <div className="center">x {size.qty}</div>
 
                         <i className="fa fa-plus-square icon-plus-order"
                            onClick={increaseQty}

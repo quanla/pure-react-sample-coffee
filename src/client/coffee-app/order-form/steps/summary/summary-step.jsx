@@ -18,6 +18,8 @@ export class SummaryStep extends RComponent {
                 index={{step: 4, total: 4}}
                 onBack={onGoItems}
             >
+                <div className="header-separator"/>
+
                 {renderBillItems((items) => onChange({items}), bill.items)}
 
                 {renderCustomerInfo(bill.customer, onGoCustomerInfo)}

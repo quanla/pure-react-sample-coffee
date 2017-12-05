@@ -1,19 +1,61 @@
 .summary-step .bill-items {
   .bill-item {
-    .product-name {
+    padding 0 15px;
+    margin-bottom 15px;
 
+
+    .product-name {
+      font-size: 14px;
+      color: #777;
+      margin-bottom 5px;
     }
 
     .sizes {
       .size {
-        .name-price {
+        position relative;
+        qty-width = 105px;
+        total-col-width = 165px;
+        padding-right total-col-width + qty-width;
 
+        .name-price {
+          color: #ff792c;
+          text-transform: capitalize;
+          font-size: 11px;
         }
         .qty {
+          position: absolute;
+          top: 0;
+          right: total-col-width;
+          width qty-width;
 
+          color: #777;
+
+          .fa {
+            position: absolute;
+            top: 0;
+
+            &.fa-minus-square {
+              left 0;
+            }
+            &.fa-plus-square {
+              right 0;
+            }
+          }
+
+          .center {
+            text-align center;
+          }
         }
         .total {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width total-col-width;
 
+          text-align right;
+          color: #ff792c;
+          font-weight: 700;
+          font-size: 15px;
         }
       }
     }
