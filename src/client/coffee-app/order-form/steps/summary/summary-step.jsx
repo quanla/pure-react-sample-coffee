@@ -20,7 +20,10 @@ export class SummaryStep extends RComponent {
             >
                 <div className="header-separator"/>
 
-                {renderBillItems((items) => onChange({items}), bill.items)}
+                {renderBillItems((items) => {
+                    onChange({items});
+                    !items.length && onGoItems();
+                }, bill.items)}
 
                 {renderCustomerInfo(bill.customer, onGoCustomerInfo)}
 

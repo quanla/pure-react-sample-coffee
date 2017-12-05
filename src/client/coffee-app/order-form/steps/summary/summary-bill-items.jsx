@@ -17,7 +17,12 @@ export const renderBillItems = (onChange, items) => {
                 if (size.qty > 1) {
                     changeBi({...bi, sizes: Cols.replace1(bi.sizes, size, {...size, qty: size.qty-1})});
                 } else {
-                    removeBi();
+                    let newBi = {...bi, sizes: Cols.remove1(bi.sizes, size)};
+                    if (newBi.sizes.length) {
+                        changeBi(newBi);
+                    } else {
+                        removeBi();
+                    }
                 }
             };
             const increaseQty = () => {
