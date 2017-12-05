@@ -6,6 +6,7 @@ import {CustomerInfo} from "./steps/customer-info/customer-info-step";
 import {LocationStep} from "./steps/location/location-step";
 import {ItemsStep} from "./steps/items/items-step";
 import {SummaryStep} from "./steps/summary/summary-step";
+import {userInfo} from "../authen/user-info";
 
 export class OrderForm extends RComponent {
     constructor(props, context) {
@@ -41,6 +42,7 @@ export class OrderForm extends RComponent {
             ],
         };
 
+        this.onUnmount(userInfo.onChange((user) => user && this.setState({customer: user})));
     }
 
     render() {

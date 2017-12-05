@@ -1,0 +1,50 @@
+.modal-registry .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width 100%;
+  height 100%;
+
+  overflow auto;
+
+  background-color: rgba(black, 0.6);
+
+  .modal {
+    position relative;
+  }
+
+  &.up-enter {
+    background-color: rgba(black, 0);
+
+    .modal {
+      top: 100px;
+      opacity 0;
+    }
+  }
+  &.up-enter.up-enter-active {
+    background-color: rgba(black, 0.6);
+    transition: background-color 300ms ease;
+    .modal {
+      top: 0;
+      opacity 1;
+      transition: top 300ms ease, opacity 300ms ease;
+    }
+  }
+  &.up-leave {
+    background-color: rgba(black, 0.6);
+    .modal {
+      top: 0;
+      opacity 1;
+    }
+  }
+  &.up-leave.up-leave-active {
+    background-color: rgba(black, 0);
+    transition: background-color 300ms ease;
+    .modal {
+      top: 100px;
+      opacity 0;
+      transition: top 300ms ease, opacity 300ms ease;
+    }
+  }
+
+}

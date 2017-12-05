@@ -1,14 +1,16 @@
 import classnames from "classnames";
 import {RComponent} from "../common/r-component";
+import {loginModal} from "./login/login-modal";
 
 export class LoginButton extends RComponent {
 
     render() {
+
         return (
             <div className="login-button">
-                <img src="assets/img/user_avatar.png"/>
+                <img src="assets/img/user_avatar.png" onClick={loginModal.show}/>
 
-                <div className="text">
+                <div className="text" onClick={loginModal.show}>
                     Đăng nhập để tích điểm
                 </div>
 
