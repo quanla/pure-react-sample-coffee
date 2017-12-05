@@ -24,20 +24,20 @@ export class OrderForm extends RComponent {
                 city: "Hà Nội"
             },
             items: [
-                {
-                    product: {
-                        id: 1443,
-                        name: "Affogato đá xay cà phê",
-                        sizes: [
-                            {
-                                name: "s",
-                                price: 59000,
-                            }
-                        ],
-                        group: 1,
-                    },
-                    sizes: [{name: "s", qty: 2}]
-                }
+                // {
+                //     product: {
+                //         id: 1443,
+                //         name: "Affogato đá xay cà phê",
+                //         sizes: [
+                //             {
+                //                 name: "s",
+                //                 price: 59000,
+                //             }
+                //         ],
+                //         group: 1,
+                //     },
+                //     sizes: [{name: "s", qty: 2}]
+                // }
             ],
         };
 
