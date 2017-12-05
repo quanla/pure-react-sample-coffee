@@ -80,7 +80,8 @@ export class OrderForm extends RComponent {
                         items={items}
                         onChange={(items) => this.setState({items})}
                     />
-                )
+                ),
+                isDone: () => items.length,
             },
             {
                 title: "Xem giỏ hàng",
@@ -108,7 +109,9 @@ export class OrderForm extends RComponent {
                             >
                                 Chọn thêm món
                             </div>
-                            <div className="btn-finish">
+                            <div className="btn-finish"
+                                 onClick={() => alert(JSON.stringify(this.state))}
+                            >
                                 Đặt hàng
                             </div>
                         </div>

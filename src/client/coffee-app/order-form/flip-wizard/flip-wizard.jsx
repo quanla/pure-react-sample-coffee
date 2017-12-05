@@ -17,14 +17,15 @@ export class FlipWizard extends RComponent {
 
         let nextStep = steps[currentStepIndex+1];
         let goBack = () => this.setState({currentStepIndex: currentStepIndex - 1});
+        let currentStep = steps[currentStepIndex];
         return (
             <div className="flip-wizard">
                 <FlipPanel
                     className="step-panel"
                     selectedIndex={currentStepIndex}
-                    cardClassName={steps[currentStepIndex].cardClassName}
+                    cardClassName={currentStep.cardClassName}
                 >
-                    {steps[currentStepIndex].render({
+                    {currentStep.render({
                         onGoBack: goBack,
                         onGoStep: (index) => this.setState({currentStepIndex: index}),
                     })}
@@ -32,14 +33,15 @@ export class FlipWizard extends RComponent {
 
                 <div className="controls">
                     {nextStep ? (
-                        <a
+                        <button
                             className="btn-next"
+                            disabled={currentStep.isDone && !currentStep.isDone()}
                             onClick={() => this.setState({currentStepIndex: currentStepIndex + 1})}
                         >
                             {nextStep.title}
 
                             <i className="fa fa-angle-right"/>
-                        </a>
+                        </button>
                     ) : (
                         renderFinishButtons({onGoBack: goBack})
                     )}
