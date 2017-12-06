@@ -4,6 +4,7 @@ import {FixedHeaderPanel} from "../common/fixed-header-panel";
 import {ProductApi} from "../../../../api/product-api";
 import {Collapsible} from "./collapsible";
 import {Cols} from "../../../../../utils/cols";
+import {LoadingPanel} from "../../../../common/loading-panel/loading-panel";
 
 export class ItemsStep extends RComponent {
 
@@ -99,7 +100,11 @@ export class ItemsStep extends RComponent {
                 index={{step: 3, total: 4}}
                 onBack={onGoBack}
             >
-                {groups && groups.map(renderGroup)}
+                {groups == null ? (
+                    <LoadingPanel/>
+                ) : (
+                    groups.map(renderGroup)
+                )}
             </FixedHeaderPanel>
         );
     }
