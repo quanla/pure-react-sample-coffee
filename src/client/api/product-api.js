@@ -38,6 +38,21 @@ const ProductApi = {
                 ],
                 group: 1,
             },
+            {
+                id: 1423,
+                name: "Cafe",
+                sizes: [
+                    {
+                        name: "s",
+                        price: 45000,
+                    },
+                    {
+                        name: "m",
+                        price: 52000,
+                    }
+                ],
+                group: 2,
+            },
         ]);
     },
     getProductGroups() {
