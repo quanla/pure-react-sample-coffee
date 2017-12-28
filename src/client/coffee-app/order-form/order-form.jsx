@@ -95,7 +95,7 @@ export class OrderForm extends RComponent {
                         onGoCustomerInfo={() => onGoStep(1)}
                         onGoLocation={() => onGoStep(2)}
                     />
-                )
+                ),
             },
         ];
 
