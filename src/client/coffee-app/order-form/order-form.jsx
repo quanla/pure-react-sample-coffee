@@ -1,4 +1,4 @@
-import classnames from "classnames";
+import cln from "classnames";
 import {RComponent} from "../../common/r-component";
 import {FlipWizard} from "./flip-wizard/flip-wizard";
 import {IntroStep} from "./steps/intro/intro-step";
@@ -8,11 +8,20 @@ import {ItemsStep} from "./steps/items/items-step";
 import {SummaryStep} from "./steps/summary/summary-step";
 import {userInfo} from "../authen/user-info";
 
+import {createForm, basicValidators} from 'bee-form-react';
+
+const {required, minLength, maxLength} = basicValidators;
+
 export class OrderForm extends RComponent {
     constructor(props, context) {
         super(props, context);
 
-        this.state = {
+        this.form = createForm({
+            "customer.name": [required, minLength(3)],
+            "customer.phone": [required, minLength(10), maxLength(11)],
+            "location.address": [required],
+            "location.city": [required],
+        }, {
             customer: {
                 name: "Lê Anh Quân",
                 phone: "09123123123",
@@ -40,14 +49,17 @@ export class OrderForm extends RComponent {
                 //     sizes: [{name: "s", qty: 2}]
                 // }
             ],
-        };
+        });
+
+        this.onUnmount(this.form.onChange(() => {
+            this.forceUpdate();
+        }));
 
         this.onUnmount(userInfo.onChange((user) => user && this.setState({customer: user})));
     }
 
     render() {
-
-        const {customer, location, items} = this.state;
+        const fv = this.form.createView();
 
         const steps = [
             {
@@ -59,17 +71,16 @@ export class OrderForm extends RComponent {
                 title: "Nhập thông tin đặt hàng",
                 render: () => (
                     <CustomerInfo
-                        customer={customer}
-                        onChange={(customer) => this.setState({customer})}
+                        fv={fv.scope("customer")}
                     />
-                )
+                ),
+                isDone: () => !fv.hasError("customer"),
             },
             {
                 title: "Chọn vị trí giao hàng",
                 render: ({onGoBack}) => (
                     <LocationStep
-                        location={location}
-                        onChange={(location) => this.setState({location})}
+                        fv={fv.scope("location")}
                         onGoBack={onGoBack}
                     />
                 )
@@ -78,19 +89,17 @@ export class OrderForm extends RComponent {
                 title: "Chọn món",
                 render: ({onGoBack}) => (
                     <ItemsStep
+                        fv={fv.scope("items")}
                         onGoBack={onGoBack}
-                        items={items}
-                        onChange={(items) => this.setState({items})}
                     />
                 ),
-                isDone: () => items.length,
+                isDone: () => fv.getValue("items").length,
             },
             {
                 title: "Xem giỏ hàng",
                 render: ({onGoBack, onGoStep}) => (
                     <SummaryStep
-                        bill={this.state}
-                        onChange={(update) => this.setState(update)}
+                        fv={fv}
                         onGoItems={onGoBack}
                         onGoCustomerInfo={() => onGoStep(1)}
                         onGoLocation={() => onGoStep(2)}
@@ -111,8 +120,9 @@ export class OrderForm extends RComponent {
                             >
                                 Chọn thêm món
                             </div>
-                            <div className="btn-finish"
-                                 onClick={() => alert(JSON.stringify(this.state))}
+                            <div
+                                className={cln("btn-finish", {disabled: fv.hasError()})}
+                                onClick={() => alert(JSON.stringify(fv.getValue()))}
                             >
                                 Đặt hàng
                             </div>

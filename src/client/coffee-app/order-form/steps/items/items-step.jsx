@@ -21,38 +21,38 @@ export class ItemsStep extends RComponent {
     }
 
     addProduct(product, sizeName) {
-        const {items, onChange} = this.props;
+        const {fv} = this.props;
 
-        let bi = items.find((bi) => bi.product.id == product.id);
-        let newItems;
-        if (bi) {
-            const size = bi.sizes.find(size => size.name == sizeName);
-            newItems = Cols.replace1(items, bi, {...bi,
-                sizes: size ?
-                    Cols.replace1(bi.sizes, size, {name: sizeName, qty: size.qty + 1}) :
-                    bi.sizes.concat([{name: sizeName, qty: 1}])
-            });
-        } else {
-            newItems = items.concat([{
-                product,
-                sizes: [{name: sizeName, qty: 1}],
-            }]);
-        }
-        onChange(newItems);
+        fv.changeValue((items) => {
+            let bi = items.find((bi) => bi.product.id === product.id);
+            if (bi) {
+                const size = bi.sizes.find(size => size.name === sizeName);
+                return Cols.replace1(items, bi, {...bi,
+                    sizes: size ?
+                        Cols.replace1(bi.sizes, size, {name: sizeName, qty: size.qty + 1}) :
+                        bi.sizes.concat([{name: sizeName, qty: 1}])
+                });
+            } else {
+                return items.concat([{
+                    product,
+                    sizes: [{name: sizeName, qty: 1}],
+                }]);
+            }
+        });
     }
 
     getQty(product, sizeName) {
-        const {items} = this.props;
+        const {fv} = this.props;
 
-        let bi = items.find((bi) => bi.product.id == product.id);
+        let bi = fv.getValue().find((bi) => bi.product.id === product.id);
 
-        return bi == null ? 0 : bi.sizes.reduce((total, size) => total + (size.name == sizeName ? size.qty : 0), 0);
+        return bi == null ? 0 : bi.sizes.reduce((total, size) => total + (size.name === sizeName ? size.qty : 0), 0);
     }
 
     getGroupQty(group) {
-        const {items} = this.props;
-        return items.reduce((total, bi) => total + (
-            bi.product.group == group ?
+        const {fv} = this.props;
+        return fv.getValue().reduce((total, bi) => total + (
+            bi.product.group === group ?
                 bi.sizes.reduce((total, size) => total + size.qty, 0)
                 : 0
         ), 0);

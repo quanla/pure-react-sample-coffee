@@ -4,12 +4,7 @@ import {RComponent} from "../../../../common/r-component";
 export class CustomerInfo extends RComponent {
 
     render() {
-        const {customer, onChange} = this.props;
-
-        const bind = (field) => ({
-            value: customer[field],
-            onChange: (e) => onChange({...customer, [field]: e.target.value}),
-        });
+        const {fv} = this.props;
 
         return (
             <div className="customer-info-step">
@@ -30,37 +25,37 @@ export class CustomerInfo extends RComponent {
                         <input
                             className="form-control"
                             placeholder="Tên"
-                            {...bind("name")}
+                            {...fv.bind("name")}
                         />
                     </div>
                     <div className="form-group">
                         <input
                             className="form-control"
                             placeholder="Số điện thoại"
-                            {...bind("phone")}
+                            {...fv.bind("phone")}
                         />
                     </div>
                     <div className="form-group">
                         <input
                             className="form-control"
                             placeholder="Email"
-                            {...bind("email")}
+                            {...fv.bind("email")}
                         />
                     </div>
                     <div className="form-group">
                         <label className="delivery-time-radio"
-                            onClick={() => onChange({...customer, deliver_now: true})}
+                            onClick={() => fv.pushValue(true, "deliver_now")}
                         >
                             <img
-                                src={customer.deliver_now ? `assets/img/option_active.png` : `assets/img/option_inactive.png`} className="option-radio"
+                                src={fv.getValue("deliver_now")? `assets/img/option_active.png` : `assets/img/option_inactive.png`} className="option-radio"
                             />
                             Giao hàng ngay
                         </label>
                         <label className="delivery-time-radio"
-                            onClick={() => onChange({...customer, deliver_now: false})}
+                            onClick={() => fv.pushValue(false, "deliver_now")}
                         >
                             <img
-                                src={!customer.deliver_now ? `assets/img/option_active.png` : `assets/img/option_inactive.png`} className="option-radio"
+                                src={!fv.getValue("deliver_now") ? `assets/img/option_active.png` : `assets/img/option_inactive.png`} className="option-radio"
                             />
                             Chọn thời gian
                         </label>

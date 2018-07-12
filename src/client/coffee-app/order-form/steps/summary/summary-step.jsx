@@ -7,7 +7,7 @@ export class SummaryStep extends RComponent {
 
     render() {
         const {
-            bill, onChange,
+            fv,
             onGoItems, onGoCustomerInfo, onGoLocation
         } = this.props;
 
@@ -23,11 +23,11 @@ export class SummaryStep extends RComponent {
                 {renderBillItems((items) => {
                     onChange({items});
                     !items.length && onGoItems();
-                }, bill.items)}
+                }, fv.getValue("items"))}
 
-                {renderCustomerInfo(bill.customer, onGoCustomerInfo)}
+                {renderCustomerInfo(fv.getValue("customer"), onGoCustomerInfo)}
 
-                {renderLocation(bill.location, onGoLocation)}
+                {renderLocation(fv.getValue("location"), onGoLocation)}
 
             </FixedHeaderPanel>
         );

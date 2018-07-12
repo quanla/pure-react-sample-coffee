@@ -19,7 +19,7 @@ module.exports = {
                 loader: 'babel-loader',
                 options: {
                     cacheDirectory: true,
-                    presets: ['latest', 'stage-0', "react"],
+                    presets: ['env', 'stage-0', "react"],
                 }
             },
         ],

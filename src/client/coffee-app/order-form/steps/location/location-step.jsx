@@ -5,12 +5,7 @@ import {FixedHeaderPanel} from "../common/fixed-header-panel";
 export class LocationStep extends RComponent {
 
     render() {
-        const {onGoBack, location, onChange} = this.props;
-
-        const bind = (field) => ({
-            value: location[field],
-            onChange: (e) => onChange({...location, [field]: e.target.value}),
-        });
+        const {onGoBack, fv} = this.props;
 
         return (
             <FixedHeaderPanel
@@ -24,20 +19,20 @@ export class LocationStep extends RComponent {
                         <div className="form-group">
                             <input
                                 className="form-control"
-                                {... bind("address")}
+                                {...fv.bind("address")}
                             />
                         </div>
                         <div className="dual-panel">
                             <div className="form-group">
                                 <input
                                     className="form-control"
-                                    {... bind("district")}
+                                    {... fv.bind("district")}
                                 />
                             </div>
                             <div className="form-group">
                                 <input
                                     className="form-control"
-                                    {... bind("city")}
+                                    {... fv.bind("city")}
                                 />
                             </div>
                         </div>
